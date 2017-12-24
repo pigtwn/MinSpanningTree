@@ -35,11 +35,11 @@ int main(){
 			cin >> graphEdge[j].v[0] >> graphEdge[j].v[1] >> graphEdge[j].w;
 		}
 		uint16_t numEdge = 0;
-		uint16_t* graphRoot = new uint16_t[n];
-		for(uint16_t j=0 ; j<n ; j++) graphRoot[j] = j;
+		uint16_t* graphParent = new uint16_t[n];
+		for(uint16_t j=0 ; j<n ; j++) graphParent[j] = j;
 		sort(graphEdge,graphEdge+m,sortByW);
 		for(uint32_t j=0 ; j<m ; j++){
-			if(!findUnion(graphEdge[j].v[0],graphEdge[j].v[1],graphRoot)){
+			if(!findUnion(graphEdge[j].v[0],graphEdge[j].v[1],graphParent)){
 				numMST[i] += graphEdge[j].w;
 				numEdge++;
 				if(numEdge == n-1) break;
@@ -47,10 +47,10 @@ int main(){
 		}
 		i++;
 		delete[] graphEdge;
-		delete[] graphRoot;
+		delete[] graphParent;
 	}
 	for(uint16_t j=0 ; j<i ; j++){
-		cout << numMST[j] << '\n';
+		cout << numMST[j] << endl;
 	}
 	return 0;
 }

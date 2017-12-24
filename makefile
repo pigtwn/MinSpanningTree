@@ -1,16 +1,18 @@
 SOURCE_NAME = main
-OUTPUT_NAME = KruskalAlgorithm
+OUTPUT_NAME = MinSpanningTree
 
 .PHONY:all
-all:clean build run
+all:build
 
 .PHONY:clean
 clean:
 	rm -rf bin
 
-build:$(SOURCE_NAME).cpp
-	mkdir bin
+build:$(SOURCE_NAME).cpp bin
 	g++ -std=c++11 -Wall $(SOURCE_NAME).cpp -o bin/$(OUTPUT_NAME).exe
+
+bin:
+	mkdir bin
 
 run:bin/$(OUTPUT_NAME).exe
 	bin/$(OUTPUT_NAME).exe
